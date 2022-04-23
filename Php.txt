@@ -1,0 +1,18 @@
+<?php
+
+
+$method = $_SERVER['REQUEST_METHOD'];
+if ($method == 'PUT') {
+    // parse_str(file_get_contents('php://input'), $_PUT);
+    print_r($_PUT); exit;  
+}
+//  echo "<pre>"; print_r($_SERVER['REQUEST_METHOD']); exit("jhdfkjdsjfk");
+$name = isset($_POST['name'])? htmlspecialchars($_POST['name']) : '' ;
+$emailPost = isset($_POST['email'])? htmlspecialchars($_POST['email']) : '' ;
+$email = filter_var($emailPost, FILTER_SANITIZE_EMAIL);
+$contact = isset($_POST['contact'])? htmlspecialchars($_POST['contact']) : '' ;
+$message = "Thank You ".$name." for the details!!";
+header('Location: http://localhost/ankitResume/AnkitCV.php?message='.$message);
+
+
+?>
